@@ -25,7 +25,11 @@ public class MainActivity extends AppCompatActivity {
         initData();
 
         mRecyclerView = (RecyclerView) findViewById(R.id.id_recyclerview);
-        mRecyclerView.setLayoutManager(new LinearLayoutManager(this));
+
+        LinearLayoutManager lm = new LinearLayoutManager(this);
+        lm.setOrientation(LinearLayoutManager.VERTICAL);
+
+        mRecyclerView.setLayoutManager(lm);
 
         mMyAdapter = new MyAdapter(this, mDatas);
 
@@ -45,6 +49,8 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        mRecyclerView.addItemDecoration(new DividerItemDecoration(this,
+                DividerItemDecoration.VERTICAL_LIST));
     }
 
     protected void initData()
